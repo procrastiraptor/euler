@@ -1,0 +1,9 @@
+#!/usr/bin/perl -w
+use strict;
+
+while (<>) {
+  chomp;
+  if (/p(\d+)\(\);$/) {
+    print "  { $1, p$1 },\n";
+  }
+}
