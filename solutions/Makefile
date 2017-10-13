@@ -10,7 +10,7 @@ lib$(libname).a: lib$(libname).a($(objects)) $(objects) list.h
 map.o: list.h members.h
 
 list.h:
-	./genlist $(sources) >$@
+	./genlist >$@
 
 members.h: list.h
 	./genmembers $^ >$@
