@@ -3,6 +3,6 @@ use strict;
 
 foreach (@ARGV) {
   if (/^(\d+)\.cpp$/) {
-    print "int p$1();\n"
+    print "long p$1();\n"
   }
 }
