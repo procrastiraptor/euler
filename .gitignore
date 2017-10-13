@@ -1,0 +1,5 @@
+*.o
+*.a
+list.h
+members.h
+euler
