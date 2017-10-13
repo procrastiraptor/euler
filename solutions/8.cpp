@@ -29,6 +29,6 @@ long p8() {
       number.begin(),
       number.end() - productLength,
       prods.begin(),
-      [](char& c) { return product(&c, &c + productLength); });
+      [](const char& c) { return product(&c, &c + productLength); });
   return *std::max_element(prods.begin(), prods.end());
 }
