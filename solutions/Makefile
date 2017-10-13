@@ -1,5 +1,7 @@
 .PHONY: clean list.h
 
+CXXFLAGS += -I..
+
 sources = $(wildcard *.cpp)
 objects = $(sources:.cpp=.o)
 
