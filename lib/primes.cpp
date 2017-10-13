@@ -47,4 +47,12 @@ plist factorsOf(long v) {
   return ps;
 }
 
+plist first(int n) {
+  plist result;
+  result.reserve(n);
+  std::generate_n(
+      std::back_inserter(result), n, [&result]() { return next(result); });
+  return result;
+}
+
 }
