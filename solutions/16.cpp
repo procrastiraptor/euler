@@ -1,10 +1,10 @@
 #include <gmpxx.h>
 #include <numeric>
-#include <string>
+#include <string_view>
 
 namespace {
 
-auto digitSum(const std::string& s) {
+auto digitSum(std::string_view s) {
   return std::accumulate(
       s.begin(),
       s.end(),
