@@ -5,6 +5,8 @@
 
 using plist = std::vector<long>;
 
+namespace primes {
+
 namespace {
 
 long next(const plist& ps) {
@@ -24,8 +26,6 @@ long next(const plist& ps) {
 
 }
 
-namespace primes {
-
 plist upTo(long v) {
   plist result;
   if (v < 2) {
@@ -41,9 +41,16 @@ plist upTo(long v) {
 plist factorsOf(long v) {
   auto max = static_cast<long>(std::sqrt(v)) + 1;
   auto ps = upTo(max);
+  plist result;
   auto it = std::remove_if(
       ps.begin(), ps.end(), [v](long p) { return v % p != 0; });
   ps.erase(it, ps.end());
+  for (auto p : ps) {
+    while (v % p == 0) { v /= p; }
+  }
+  if (v > 1) {
+    ps.push_back(v);
+  }
   return ps;
 }
 
