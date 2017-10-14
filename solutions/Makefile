@@ -1,4 +1,4 @@
-.PHONY: clean list.h
+.PHONY: clean
 
 CXXFLAGS += -I..
 
@@ -10,7 +10,7 @@ lib$(libname).a: $(objects) list.h
 
 map.o: list.h members.h
 
-list.h:
+list.h: $(sources)
 	./genlist >$@
 
 members.h: list.h
