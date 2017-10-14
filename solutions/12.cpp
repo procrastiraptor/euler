@@ -21,13 +21,11 @@ int numDivisors(int n) {
   if (fs.empty()) {
     return 2;
   }
-  std::vector<int> mult(fs.size());
-  std::transform(
+  return std::accumulate(
       fs.begin(),
       fs.end(),
-      mult.begin(),
-      [n](int f) { return 1 + multiplicity(f, n); });
-  return std::accumulate(mult.begin(), mult.end(), 1, std::multiplies<int>{});
+      1,
+      [n](int total, auto f) { return total * (1 + multiplicity(f, n)); });
 }
 
 }
