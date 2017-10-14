@@ -1,4 +1,5 @@
 export CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++17 -O3
+export ARFLAGS = r
 
 util_dir = lib
 solution_dir = solutions
