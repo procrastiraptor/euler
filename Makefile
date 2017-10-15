@@ -5,7 +5,7 @@ util_dir = lib
 solution_dir = solutions
 solution_lib = solve
 LDFLAGS = -L$(solution_dir) -L$(util_dir)
-LDLIBS = -l$(solution_lib) -lprimes -lgmp -lgmpxx
+LDLIBS = -l$(solution_lib) -lutil -lgmp -lgmpxx
 
 .PHONY: clean $(solution_dir)
 

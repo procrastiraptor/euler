@@ -1,8 +1,10 @@
 .PHONY: clean
 
-all: libprimes.a
+sources = $(wildcard *.cpp)
+objects = $(sources:.cpp=.o)
 
-libprimes.a: libprimes.a(primes.o) primes.o
+libutil.a: $(objects)
+	$(AR) $(ARFLAGS) $@ $(objects)
 
 clean:
 	$(RM) *.a *.o
