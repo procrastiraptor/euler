@@ -2,7 +2,7 @@
 use strict;
 
 foreach (glob "*.cpp") {
-  if (/^(\d+)\.cpp$/) {
+  if (/^0*(\d+)\.cpp$/) {
     print "long p$1();\n"
   }
 }
