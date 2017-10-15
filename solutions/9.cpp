@@ -1,4 +1,6 @@
-int p9() {
+namespace {
+
+constexpr int p() {
   for (int a = 1; a < 1000; a++) {
     for (int b = a + 1; b < 1000; b++) {
       int c = 1000 - a - b;
@@ -8,4 +10,10 @@ int p9() {
     }
   }
   return 0;
+}
+
+}
+
+int p9() {
+  return p();
 }
