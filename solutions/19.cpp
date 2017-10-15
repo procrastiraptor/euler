@@ -2,16 +2,14 @@
 
 namespace {
 
-std::array<int, 12> lengths = {
+constexpr std::array<int, 12> lengths = {
   31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 constexpr bool leap(int year) {
   return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
 }
 
-}
-
-int p19() {
+constexpr int p() {
   int result = 0;
   int weekday = 1;
   for (int y = 1900; y <= 2000; y++) {
@@ -23,4 +21,10 @@ int p19() {
     }
   }
   return result;
+}
+
+}
+
+int p19() {
+  return p();
 }
