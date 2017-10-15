@@ -37,9 +37,9 @@ struct Node {
 using Tree = std::vector<Node>;
 
 void setupPointers(Tree& t) {
-  Node* a = t.data();
-  Node* b = a + 1;
-  for (size_t n = 2; b < t.data() + t.size(); a = b + n, std::swap(a, b), n++) {
+  auto a = t.begin();
+  auto b = a + 1;
+  for (size_t n = 2; b < t.end(); a = b + n, std::swap(a, b), n++) {
     for (size_t i = 0; i < n - 1; i++) {
       a[i].left = &b[i];
       a[i].right = &b[i + 1];
