@@ -33,16 +33,11 @@ long p22() {
   std::getline(std::cin, data, '\n');
   auto names = split(data);
   std::sort(names.begin(), names.end());
-  std::vector<int> scores;
-  scores.reserve(names.size());
-  std::transform(
+  return std::accumulate(
       names.begin(),
       names.end(),
-      std::back_inserter(scores),
-      nameScore);
-  return std::accumulate(
-      scores.begin(),
-      scores.end(),
       0L,
-      [i=1](long total, int s) mutable { return total + (s * i++); });
+      [i=1](long total, auto n) mutable {
+        return total + (nameScore(n) * i++);
+      });
 }
