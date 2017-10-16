@@ -10,11 +10,7 @@ struct Node {
   int value;
   Node *left, *right;
 
-  explicit Node(int i)
-    : value(i),
-      left(nullptr),
-      right(nullptr),
-      maxPath_() {}
+  explicit Node(int i) : value(i), left(nullptr), right(nullptr), maxPath_() {}
 
   int maxPath() const {
     if (maxPath_.has_value()) {
