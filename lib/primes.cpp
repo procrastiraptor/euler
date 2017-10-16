@@ -62,4 +62,17 @@ plist first(int n) {
   return result;
 }
 
+bool is(long v) {
+  if (v < 2) {
+    return false;
+  }
+  auto max = static_cast<long>(std::sqrt(v)) + 1;
+  for (long i = 2; i <= max; i++) {
+    if (v % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
 }
