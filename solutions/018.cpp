@@ -1,8 +1,6 @@
 #include <algorithm>
 #include <iostream>
 #include <iterator>
-#include <memory>
-#include <mutex>
 #include <optional>
 #include <vector>
 
@@ -16,11 +14,9 @@ struct Node {
     : value(i),
       left(nullptr),
       right(nullptr),
-      m_(std::make_unique<std::mutex>()),
       maxPath_() {}
 
   int maxPath() const {
-    std::lock_guard<std::mutex> g(*m_);
     if (maxPath_.has_value()) {
       return maxPath_.value();
     }
@@ -30,7 +26,6 @@ struct Node {
   }
 
  private:
-  std::unique_ptr<std::mutex> m_;
   mutable std::optional<int> maxPath_;
 };
 
