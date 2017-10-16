@@ -5,4 +5,4 @@
 
 using Solution = std::function<long()>;
 
-extern std::map<int, Solution> solutions;
+extern const std::map<int, Solution> solutions;
