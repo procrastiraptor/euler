@@ -1,22 +1,13 @@
 #include <algorithm>
+#include <cstdio>
 #include <numeric>
 #include <set>
 
 namespace {
 
-int digits(char* dst, int src) {
-  int written = 0;
-  for (; src > 0; src /= 10, written++) {
-    *dst++ = (src % 10) + '0';
-  }
-  return written;
-}
-
 bool pandigital(int a, int b) {
-  std::array<char, 64> buf;
-  int n = digits(buf.data(), a);
-  n += digits(buf.data() + n, b);
-  n += digits(buf.data() + n, a * b);
+  std::array<char, 10> buf;
+  int n = std::snprintf(buf.data(), buf.size(), "%d%d%d", a, b, a * b);
   if (n != 9) {
     return false;
   }
@@ -29,7 +20,7 @@ bool pandigital(int a, int b) {
 }
 
 int p32() {
-  constexpr int max = 10'000;
+  constexpr int max = 5'000;
   std::set<int> prods;
   for (int a = 0; a < max; a++) {
     for (int b = a; b < max; b++) {
