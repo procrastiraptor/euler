@@ -12,9 +12,12 @@ constexpr std::array<int, 7> divisors = { 2, 3, 5, 7, 11, 13, 17 };
 
 auto substrings(std::string_view sv) {
   std::array<int, divisors.size()> result;
-  for (size_t i = 0; i < result.size(); i++) {
-    result[i] = std::stod(std::string(sv.substr(i + 1, 3)));
-  }
+  auto p = sv.data() + 1;
+  std::transform(
+      p,
+      p + result.size(),
+      result.begin(),
+      [](const char& c) { return std::stod(std::string(&c, 3)); });
   return result;
 }
 
