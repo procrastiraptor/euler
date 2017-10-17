@@ -3,14 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace {
-
-template<class C>
-bool palindrome(const C& c) {
-  return std::equal(c.begin(), c.end(), c.rbegin());
-}
-
-}
+#include "lib/palindrome.h"
 
 int p4() {
   std::vector<int> is(900);
