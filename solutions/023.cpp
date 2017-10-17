@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <numeric>
 #include <unordered_set>
 #include <vector>
@@ -19,8 +20,7 @@ int p23() {
   constexpr int max = 28'123;
   std::vector<int> is(max);
   std::iota(is.begin(), is.end(), 1);
-  auto it = std::remove_if(
-      is.begin(), is.end(), [](int i) { return !abundant(i); });
+  auto it = std::remove_if(is.begin(), is.end(), std::not_fn(abundant));
   is.erase(it, is.end());
   std::unordered_set<int> sums;
   for (int i : is) {

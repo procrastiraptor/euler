@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <array>
+#include <functional>
 #include <numeric>
 #include <string>
 #include <string_view>
@@ -33,10 +34,7 @@ bool divisible(std::string_view sv) {
 
 long p43() {
   auto is = permutations("0123456789");
-  auto it = std::remove_if(
-      is.begin(),
-      is.end(),
-      [](const auto& s) { return !divisible(s); });
+  auto it = std::remove_if(is.begin(), is.end(), std::not_fn(divisible));
   return std::accumulate(
       is.begin(),
       it,

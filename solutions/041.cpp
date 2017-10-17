@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <string>
 
 #include "lib/primes.h"
@@ -15,9 +16,6 @@ bool pandigital(int i) {
 
 int p41() {
   auto ps = primes::upTo(10'000'000);
-  auto it = std::remove_if(
-      ps.begin(),
-      ps.end(),
-      [](long p) { return !pandigital(p); });
+  auto it = std::remove_if(ps.begin(), ps.end(), std::not_fn(pandigital));
   return *(it - 1);
 }
