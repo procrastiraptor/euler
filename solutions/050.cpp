@@ -6,12 +6,17 @@
 namespace {
 
 int primeSum(const std::vector<long>& primes, int v) {
-  for (const auto& p : primes) {
-    auto ptr = &p;
-    for (int i = 0, sum = 0; sum <= v; sum += ptr[i], i++) {
-      if (sum == v) {
-        return i;
-      }
+  auto a = primes.begin();
+  auto sum = *a;
+  for (auto b = a + 1; b < primes.end() && *b < v; ++b) {
+    if (sum < v) {
+      sum += *b;
+    }
+    while (sum > v) {
+      sum -= *a++;
+    }
+    if (sum == v) {
+      return std::distance(a, b);
     }
   }
   return 0;
