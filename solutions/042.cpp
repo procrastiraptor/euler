@@ -17,13 +17,12 @@ int score(std::string_view sv) {
 
 bool triangle(std::string_view sv) {
   auto s = score(sv);
-  for (int i = 1, n = 2; ; i += n, n++) {
+  for (int i = 1, n = 2; i <= s; i += n, n++) {
     if (i == s) {
       return true;
-    } else if (i > s) {
-      return false;
     }
   }
+  return false;
 }
 
 }
