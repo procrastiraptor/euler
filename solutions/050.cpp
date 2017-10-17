@@ -9,13 +9,12 @@ int primeSum(const std::vector<long>& primes, int v) {
   auto a = primes.begin();
   auto sum = *a;
   for (auto b = a + 1; b < primes.end() && *b < v; ++b) {
-    if (sum < v) {
-      sum += *b;
-    }
     while (sum > v) {
       sum -= *a++;
     }
-    if (sum == v) {
+    if (sum < v) {
+      sum += *b;
+    } else {
       return std::distance(a, b);
     }
   }
