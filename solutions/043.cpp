@@ -18,7 +18,7 @@ auto substrings(std::string_view sv) {
       p,
       p + result.size(),
       result.begin(),
-      [](const char& c) { return std::stod(std::string(&c, 3)); });
+      [](const char& c) { return std::stoi(std::string(&c, 3)); });
   return result;
 }
 

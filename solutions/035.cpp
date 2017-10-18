@@ -22,7 +22,7 @@ bool circular(const std::vector<long>& primes, int i) {
       rs.begin(),
       rs.end(),
       [&primes](const auto& s) {
-        return std::binary_search(primes.begin(), primes.end(), std::stod(s));
+        return std::binary_search(primes.begin(), primes.end(), std::stol(s));
       });
 }
 
