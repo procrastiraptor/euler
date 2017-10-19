@@ -17,7 +17,7 @@ bool amicable(const std::vector<int>& v, int i) {
     return false;
   }
   auto sum = v[i - 1];
-  if (sum == i) {
+  if (sum == i || sum < 1) {
     return false;
   }
   if (static_cast<size_t>(sum) > v.size()) {
