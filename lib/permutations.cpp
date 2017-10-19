@@ -11,9 +11,8 @@ std::vector<std::string> permutations(std::string s) {
   result.reserve(ps.size() * (ps.front().size() + 1));
   for (const auto& p : ps) {
     for (size_t i = 0; i <= p.size(); i++) {
-      std::string n(p);
-      n.insert(i, 1, c);
-      result.emplace_back(std::move(n));
+      result.emplace_back(p);
+      result.back().insert(i, 1, c);
     }
   }
   return result;
