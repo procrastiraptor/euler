@@ -6,8 +6,10 @@ std::vector<std::string> permutations(std::string s) {
   }
   char c = s.back();
   s.pop_back();
+  auto ps = permutations(std::move(s));
   std::vector<std::string> result;
-  for (const auto& p : permutations(std::move(s))) {
+  result.reserve(ps.size() * (ps.front().size() + 1));
+  for (const auto& p : ps) {
     for (size_t i = 0; i <= p.size(); i++) {
       std::string n(p);
       n.insert(i, 1, c);
