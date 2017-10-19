@@ -5,8 +5,8 @@ CXXFLAGS += -I..
 sources = $(wildcard *.cpp)
 objects = $(sources:.cpp=.o)
 
-lib$(libname).a: $(objects) list.h
-	$(AR) $(ARFLAGS) $@ $(objects)
+lib$(libname).a: $(objects)
+	$(AR) $(ARFLAGS) $@ $?
 
 map.o: list.h members.h
 
