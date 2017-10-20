@@ -1,23 +1,13 @@
 #include <cmath>
 #include <iostream>
 #include <limits>
-#include <optional>
 #include <sstream>
-#include <string_view>
-#include <vector>
+
+#include "lib/matsearch.h"
 
 namespace {
 
-struct Cell {
-  int val;
-  mutable std::optional<int> minPath;
-
-  explicit Cell(int i) : val(i), minPath() {}
-};
-
-using Matrix = std::vector<Cell>;
-
-auto minPath(const Matrix& m, size_t idx) {
+auto minPath(const matsearch::Matrix& m, size_t idx) {
   if (idx >= m.size()) {
     return 0;
   }
@@ -35,28 +25,16 @@ auto minPath(const Matrix& m, size_t idx) {
   return c.minPath.value();
 }
 
-auto split(std::string_view sv) {
-  Matrix result;
-  int curr = 0;
-  for (char c : sv) {
-    if (std::isdigit(c)) {
-      curr = curr * 10 + (c - '0');
-    } else {
-      result.emplace_back(curr);
-      curr = 0;
-    }
-  }
-  if (!result.empty()) {
-    result.back().minPath = result.back().val;
-  }
-  return result;
-}
-
 }
 
 int p81() {
   std::ostringstream os;
   os << std::cin.rdbuf();
-  auto m = split(os.str());
+  auto m = matsearch::split(os.str());
+  if (m.empty()) {
+    return 0;
+  } else {
+    m.back().minPath = m.back().val;
+  }
   return minPath(m, 0);
 }
