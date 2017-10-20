@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <optional>
@@ -41,12 +40,7 @@ void setupPointers(Tree& t) {
 }
 
 int p18() {
-  Tree t;
-  std::transform(
-      std::istream_iterator<int>(std::cin),
-      std::istream_iterator<int>(),
-      std::back_inserter(t),
-      [](int v) { return Node{v}; });
+  Tree t(std::istream_iterator<int>(std::cin), std::istream_iterator<int>());
   if (t.empty()) {
     return 0;
   }
