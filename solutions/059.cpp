@@ -39,22 +39,20 @@ bool plaintext(std::string_view text) {
   return text.find(" the ") != std::string_view::npos;
 }
 
-int sum(std::string_view sv) {
-  return std::accumulate(sv.begin(), sv.end(), 0);
-}
-
 }
 
 int p59() {
   std::string data;
   std::getline(std::cin, data, '\n');
   auto input = read(data);
-  for (char a = 'a'; a <= 'z'; a++) {
-    for (char b = 'a'; b <= 'z'; b++) {
-      for (char c = 'a'; c <= 'z'; c++) {
-        auto decoded = tr(input, { a, b, c, });
-        if (plaintext(decoded)) {
-          return sum(decoded);
+
+  std::array<char, 'z' - 'a' + 1> lc;
+  std::iota(lc.begin(), lc.end(), 'a');
+  for (char a : lc) {
+    for (char b : lc) {
+      for (char c : lc) {
+        if (auto decoded = tr(input, { a, b, c, }); plaintext(decoded)) {
+          return std::accumulate(decoded.begin(), decoded.end(), 0);
         }
       }
     }
