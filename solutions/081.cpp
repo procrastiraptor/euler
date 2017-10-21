@@ -1,7 +1,6 @@
 #include <cmath>
 #include <iostream>
 #include <limits>
-#include <sstream>
 
 #include "lib/matsearch.h"
 
@@ -28,9 +27,8 @@ auto minPath(const matsearch::Matrix& m, size_t idx) {
 }
 
 int p81() {
-  std::ostringstream os;
-  os << std::cin.rdbuf();
-  auto m = matsearch::split(os.str());
+  matsearch::Matrix m;
+  std::cin >> m;
   if (m.empty()) {
     return 0;
   } else {

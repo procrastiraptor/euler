@@ -1,7 +1,7 @@
 #pragma once
 
+#include <istream>
 #include <optional>
-#include <string_view>
 #include <vector>
 
 namespace matsearch {
@@ -15,6 +15,6 @@ struct Cell {
 
 using Matrix = std::vector<Cell>;
 
-Matrix split(std::string_view sv);
+std::istream& operator>>(std::istream& in, Matrix& m);
 
 }

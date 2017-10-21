@@ -2,21 +2,13 @@
 
 namespace matsearch {
 
-Matrix split(std::string_view sv) {
-  Matrix result;
-  int curr = 0;
-  for (char c : sv) {
-    if (std::isdigit(c)) {
-      curr = curr * 10 + (c - '0');
-    } else {
-      result.emplace_back(curr);
-      curr = 0;
-    }
+std::istream& operator>>(std::istream& in, Matrix& m) {
+  int i;
+  while (in >> i) {
+    m.emplace_back(i);
+    in.get();  // skip ',' or newline
   }
-  if (!result.empty()) {
-    result.back().minPath = result.back().val;
-  }
-  return result;
+  return in;
 }
 
 }
