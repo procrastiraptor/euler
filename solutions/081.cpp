@@ -6,20 +6,13 @@
 
 namespace {
 
-auto minPath(const matsearch::Matrix& m, size_t idx) {
-  if (idx >= m.size()) {
-    return 0;
-  }
-  const auto& c = m[idx];
+auto minPath(const matsearch::Matrix& m, const matsearch::Cell& c) {
   if (c.minPath.has_value()) {
     return c.minPath.value();
   }
-  auto dim = static_cast<size_t>(std::sqrt(m.size()));
-  auto i = idx / dim;
-  auto j = idx % dim;
   constexpr auto max = std::numeric_limits<int>::max();
-  auto right = j < dim - 1 ? minPath(m, idx + 1) : max;
-  auto down = i < dim - 1 ? minPath(m, idx + dim) : max;
+  auto right = c.right ? minPath(m, *c.right) : max;
+  auto down = c.down ? minPath(m, *c.down) : max;
   c.minPath = c.val + std::min(right, down);
   return c.minPath.value();
 }
@@ -34,5 +27,5 @@ int p81() {
   } else {
     m.back().minPath = m.back().val;
   }
-  return minPath(m, 0);
+  return minPath(m, m.front());
 }
