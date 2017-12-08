@@ -2,7 +2,8 @@ with Ada.Text_IO;
 
 procedure Euler8 is
 
-   type Product is range 0 .. 10_000_000_000_000;
+   Product_Size : constant Positive := 13;
+   type Product is range 0 .. 9 ** Product_Size;
    package Product_IO is new Ada.Text_IO.Integer_IO(Product);
 
    function String_Product(S: String) return Product is
@@ -18,7 +19,6 @@ procedure Euler8 is
    Number: String(1 .. 1000);
    Append: Positive := Number'First;
 
-   Product_Size : constant Positive := 13;
    Curr, Max: Product := 0;
 begin
    while not Ada.Text_IO.End_Of_File loop
