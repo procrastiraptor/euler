@@ -1,6 +1,16 @@
 with Ada.Unchecked_Deallocation;
 
 package body Words is
+
+   function Score(S: String) return Natural is
+      Total: Natural := 0;
+   begin
+      for C of S loop
+         Total := Total + Character'Pos(C) - Character'Pos('A') + 1;
+      end loop;
+      return Total;
+   end Score;
+
    function Split(S: String; On: Character := ',') return List is
       Count: Natural := 0;
    begin
